@@ -1,0 +1,295 @@
+@startuml
+left to right direction
+skinparam headerFontSize 30
+skinparam headerFontStyle bold
+skinparam classAttributeIconSize 0
+scale 1.0
+package sample {
+package sample.Data {
+enum sample.Data.Typ  {
+.. Fields  ..
+-name : String
+.. Methods ..
++Equals(String) : boolean
++getName() : String
+.. Static ..
++ {static} Book : Typ
++ {static} Brochure : Typ
++ {static} Bulletin : Typ
++ {static} Directory : Typ
++ {static} Magazine : Typ
++ {static} Newspaper : Typ
++ {static} get() : Typ
++ {static} valueOf() : Typ
++ {static} values() : Typ[]
+}
+class sample.Data.PersonList {
+.. Fields  ..
+-personData : ObservableList
+.. Methods ..
++add(Person) : void
++getCaunter() : int
++getPerson(int) : Person
++getPersonData() : ObservableList
++remove(Person) : void
+.. Static ..
+- {static} caunter : int
+- {static} pref : Preferences
+}
+class sample.Data.Person {
+.. Fields  ..
+-Adds : StringProperty
+-Birthday : StringProperty
+-Lastname : StringProperty
+-Middlename : StringProperty
+-Name : StringProperty
+-id : IntegerProperty
+.. Methods ..
++addsProperty() : StringProperty
++birthdayProperty() : StringProperty
++getAdds() : String
++getBirthday() : String
++getId() : int
++getLastname() : String
++getMiddlename() : String
++getName() : String
++idProperty() : StringProperty
++lastnameProperty() : StringProperty
++middlenameProperty() : StringProperty
++nameProperty() : StringProperty
++setAdds(String) : void
++setBirthday(String) : void
++setLastname(String) : void
++setMiddlename(String) : void
++setName(String) : void
++toString() : String
+}
+class sample.Data.EditionList {
+.. Fields  ..
+-editionData : ObservableList
+.. Methods ..
++add(Edition) : void
++getCaunter() : int
++getEdition(int) : Edition
++getEditionData() : ObservableList
++remove(Edition) : void
+.. Static ..
+- {static} caunter : int
+- {static} pref : Preferences
+}
+class sample.Data.Data {
+.. Fields  ..
+~alert : Alert
+-conn : Connection
+-listEdition : EditionList
+-listPerson : PersonList
+-listSubscription : SubscriptionList
+-resSet : ResultSet
+-statmt : Statement
+.. Methods ..
+-Connect() : void
+-CreateClient() : void
+-CreateEdition() : void
+-CreateSubscription() : void
++deleteDataEdition(Edition) : void
++deleteDataPerson(Person) : void
++deleteDataSubscription(Subscription) : void
++getDataOfEdition() : ObservableList
++getDataOfPerson() : ObservableList
++getDataOfSubscription() : ObservableList
++getNextEdition() : int
++getNextPerson() : int
++getNextSubscription() : int
++newDataEdition(Edition) : void
++newDataPerson(Person) : void
++newDataSubscription(Subscription) : void
++updateDataEdition(Edition) : void
++updateDataPerson(Person) : void
++updateDataSubscription(Subscription) : void
+}
+class sample.Data.SubscriptionList {
+.. Fields  ..
+-subscriptionData : ObservableList
+.. Methods ..
++add(Subscription) : void
++getCaunter() : int
++getSubscriptionData() : ObservableList
++remove(Subscription) : void
+.. Static ..
+- {static} caunter : int
+- {static} pref : Preferences
+}
+class sample.Data.Subscription {
+.. Fields  ..
+-edition : Edition
+-edition_pr : StringProperty
+-id : IntegerProperty
+-subscriber : Person
+-susubscriber_pr : StringProperty
+.. Methods ..
++editionProperty() : StringProperty
++getEdition() : Edition
++getId() : String
++getIntegerId() : int
++getSubscriber() : Person
++idProperty() : StringProperty
++setEdition(Edition) : void
++setSubscriber(Person) : void
++subscriberProperty() : StringProperty
+}
+class sample.Data.Edition {
+.. Fields  ..
+-edition : StringProperty
+-id : IntegerProperty
+-name : StringProperty
+-typ : StringProperty
+.. Methods ..
++editionProperty() : StringProperty
++getEdition() : String
++getId() : int
++getName() : String
++getTyp() : String
++idProperty() : StringProperty
++nameProperty() : StringProperty
++setEdition(String) : void
++setName(String) : void
++setTyp(String) : void
++toString() : String
++typProperty() : StringProperty
+}
+
+}
+class sample.DialogController {
+.. Fields  ..
++addsField : TextField
++birthdayField : TextField
+-data : Data
+-dialogStage : Stage
++firstNameField : TextField
++idField : Label
++lastNameField : TextField
++middleNameField : TextField
+-person : Person
+-upd_new : boolean
+.. Methods ..
++handleCancel(ActionEvent) : void
++handleOk(ActionEvent) : void
++initialize() : void
++setData(Data) : void
++setDialogStage(Stage) : void
++setPerson(Person) : void
++setUpd_new(boolean) : void
+}
+class sample.Controller {
+.. Fields  ..
++Column_11 : TableColumn
++Column_12 : TableColumn
++Column_13 : TableColumn
++Column_14 : TableColumn
++Column_15 : TableColumn
++Column_16 : TableColumn
++Column_21 : TableColumn
++Column_22 : TableColumn
++Column_23 : TableColumn
++Column_24 : TableColumn
++Column_31 : TableColumn
++Column_32 : TableColumn
++Column_33 : TableColumn
++Lastname : Label
++Middlename : Label
++Name : Label
+~NayEdition : Edition
+~NayPerson : Person
+~NaySubscription : Subscription
++Table_1 : TableView
++Table_2 : TableView
++Table_3 : TableView
+~alert : Alert
+~d : Data
+.. Methods ..
++DelEd(ActionEvent) : void
++DelPer(ActionEvent) : void
++DelSub(ActionEvent) : void
++NewEd(ActionEvent) : void
++NewPer(ActionEvent) : void
++NewSub(ActionEvent) : void
++RedEd(ActionEvent) : void
++RedPer(ActionEvent) : void
++RedSub(ActionEvent) : void
+-ShowData(Person) : void
+-ShowData(Subscription) : void
+-ShowData(Edition) : void
++initialize() : void
+.. Static ..
++ {static} main1 : Main
+}
+class sample.Main {
+.. Fields  ..
+~st : Stage
+.. Methods ..
++showEditionEditDialog(Edition, Data, boolean) : void
++showPersonEditDialog(Person, Data, boolean) : void
++showSubscriptionEditDialog(Subscription, Data, boolean) : void
++start(Stage) : void
+.. Static ..
++ {static} main() : void
+}
+class sample.ControllerSub {
+.. Fields  ..
+-data : Data
+-dialogStage : Stage
++editionField : ComboBox
++idField : Label
++personField : ComboBox
+-subscription : Subscription
+-upd_new : boolean
+.. Methods ..
++handleCancel(ActionEvent) : void
++handleOk(ActionEvent) : void
++setData(Data) : void
++setDialogStage(Stage) : void
++setSubscription(Subscription) : void
++setUpd_new(boolean) : void
+}
+class sample.ControllerEdit {
+.. Fields  ..
++NameField : TextField
+-data : Data
+-dialogStage : Stage
+-edition : Edition
++editionField : TextField
++idField : Label
+-list : ObservableList
++typField : ComboBox
+-upd_new : boolean
+.. Methods ..
++handleCancel(ActionEvent) : void
++handleOk(ActionEvent) : void
++initialize() : void
++setData(Data) : void
++setDialogStage(Stage) : void
++setEdition(Edition) : void
++setUpd_new(boolean) : void
+}
+
+}
+sample.DialogController o-- "1..1" sample.Data.Person
+sample.DialogController o-- "1..1" sample.Data.Data
+sample.Controller o-- "1..1" sample.Data.Person
+sample.Controller o-- "1..1" sample.Data.Edition
+sample.Controller o-- "1..1" sample.Data.Subscription
+sample.Controller o-- "1..1" sample.Data.Data
+sample.Controller o-- "1..1" sample.Main
+sample.Data.PersonList *-- "0..*" sample.Data.Person
+sample.Data.EditionList *-- "0..*" sample.Data.Edition
+sample.ControllerSub o-- "1..1" sample.Data.Subscription
+sample.ControllerSub o-- "1..1" sample.Data.Data
+sample.Data.Data o-- "1..1" sample.Data.PersonList
+sample.Data.Data o-- "1..1" sample.Data.EditionList
+sample.Data.Data o-- "1..1" sample.Data.SubscriptionList
+sample.Data.SubscriptionList *-- "0..*" sample.Data.Subscription
+sample.Data.Subscription o-- "1..1" sample.Data.Person
+sample.Data.Subscription o-- "1..1" sample.Data.Edition
+sample.ControllerEdit o-- "1..1" sample.Data.Edition
+sample.ControllerEdit o-- "1..1" sample.Data.Data
+@enduml
